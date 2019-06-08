@@ -1,17 +1,18 @@
 # NGU Quests
-Unponderable's Questing Script for NGU Idle
+Unponderable's Questing Script for NGU Idle\
 Supports NGU Idle version 0.423
 
 Script will endlessly farm quests and the corresponding items.
 
 
 Prerequisites:
- Questing unlocked
- Adequate Inventory Space to handle various quest items
- Ability to one-shot all unlocked questing zones
+1. Questing unlocked
+2. Adequate Inventory Space to handle various quest items
+3. Ability to one-shot all unlocked questing zones
 
- I strongly suggest wearing Quest Drops and Respawn accessories for maximum effectiveness
- I also suggest filtering <= 1K Boosts and MacGuffins unless you are confident in your auto-boost/merge.
+Strong Suggestions:
+1. Wear Quest Drops and Respawn gear for maximum effectiveness. Ideally, respawn time should be <= 1 second.
+2. Filter <= 1K Boosts and MacGuffins unless you are confident in your auto-boost/merge.
 
 Instructions for Questing: 
 1. Run the script.
