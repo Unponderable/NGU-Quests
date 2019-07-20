@@ -66,7 +66,7 @@ Esc::ExitApp ;**Press Escape to end the script at anytime**
 	XPositionNextZone := Px + 929 ;The right arrow in the Adventure menu
 	YPositionNextZone := Py + 221
 	Y_Inventory := Py + 537 - 375
-	Y_Questing := Py + 841 - 375
+	Y_Questing := Py + 446
 	
 	XQuestAccept := Px + 1040 - 330
 	XQuestSkip := Px + 1200 - 330
