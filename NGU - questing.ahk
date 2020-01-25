@@ -15,6 +15,8 @@ Global XQuestSkip
 Global YQuestButton
 Global XConfirmSkipQuest
 Global YConfirmSkipQuest
+Global XQuestZone
+Global YQuestZone
 
 Global CurrentQuest
 Global CurrentQuestAdvZones
@@ -59,41 +61,32 @@ Esc::ExitApp ;**Press Escape to end the script at anytime**
 	
 	
 	;Set the position of boxes relative to the top left corner. Determined in advance.
-	XPositionAdventure := Px + 237 ;The Adventure button under Features
-	YPositionAdventure := Py + 140
-	XPositionPreviousZone := Px + 331 ;The left arrow in the Adventure menu
-	YPositionPreviousZone := Py + 221
-	XPositionNextZone := Px + 929 ;The right arrow in the Adventure menu
-	YPositionNextZone := Py + 221
-	Y_Inventory := Py + 537 - 375
-	Y_Questing := Py + 446
-	
-	XQuestAccept := Px + 1040 - 330
-	XQuestSkip := Px + 1200 - 330
-	YQuestButton := Py + 537 - 375
-	XConfirmSkipQuest := Px + 768 - 330
-	YConfirmSkipQuest := Py + 690 - 375
-	
-	XInvPage1 := 360
-	YInvPage := 572
+    XPositionAdventure := Px + 237 ;The Adventure button under Features
+    YPositionAdventure := Py + 103
+
+    Y_Inventory := Py + 537 - 410
+    Y_Questing := Py + 400
+    
+    XQuestAccept := Px + 1040 - 330
+    XQuestSkip := Px + 1200 - 330
+    YQuestButton := Py + 537 - 375
+    XConfirmSkipQuest := Px + 768 - 330
+    YConfirmSkipQuest := Py + 690 - 375
+	XQuestZone := Px + 380
+	YQuestZone := Py + 580
+    
+    XInvPage1 := Px + 355
+    YInvPage := Py + 570
 	
 	Loop{
 		QuestDetect() ;Determine what quest is active and pick up a new quest if needed
 		
-		Adventure()
-		Sleep, 100
-		Click,right,%XPositionPreviousZone%, %YPositionPreviousZone% ;Safe Zone
-		Sleep, 100
-		Loop, %CurrentQuestAdvZones% { ;Go to quest's adventure zone
-				Send,{Right}
-				Sleep,100
-		}
-		
+		Click,%XQuestZone%,%YQuestZone% ;Go to quest's adventure zone
 		
 		Loop{
 			Inventory()
 				
-			Loop, 5
+			Loop, 9
 			{
 				XSpot := XInvPage1 + 67.5 * (A_Index - 1) ;Need to search all possible pages of inventory (current max: 5)
 				Click,%XSpot%,%YInvPage%
@@ -182,7 +175,7 @@ FastIdle()
 		} Until FightingMonsterCheck() = 0
 		Send,w
 		T:=100-A_Index
-		ToolTip,Checking inventory in %T% more kills
+		ToolTip,Quest:%CurrentQuest%`nChecking inventory in %T% more kills
 		Sleep, 1000
 	}
 	Send,q
@@ -292,7 +285,7 @@ QuestDetect()
 		CurrentQuestAdvZones := 16
 		return
 	}
-	
+		
 	ImageSearch, Xif, Yif, 0, 0, %WinW%, %WinH%, *10 questing_cw_text.png
 	if Xif
 	{
