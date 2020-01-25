@@ -1,9 +1,8 @@
 # NGU Quests
 Unponderable's Questing Script for NGU Idle\
-Supports NGU Idle version 0.425-1
+Supports NGU Idle version 1.1
 
 Script will endlessly farm quests and the corresponding items.
-
 
 Prerequisites:
 1. Questing unlocked
