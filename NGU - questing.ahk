@@ -63,7 +63,10 @@ Esc::ExitApp ;**Press Escape to end the script at anytime**
 	;Set the position of boxes relative to the top left corner. Determined in advance.
     XPositionAdventure := Px + 237 ;The Adventure button under Features
     YPositionAdventure := Py + 103
-
+	XPositionPreviousZone := Px + 731 ;The left arrow in the Adventure menu
+    YPositionPreviousZone := Py + 216
+    XPositionNextZone := Px + 929 ;The right arrow in the Adventure menu
+    YPositionNextZone := Py + 216
     Y_Inventory := Py + 537 - 410
     Y_Questing := Py + 400
     
@@ -81,7 +84,14 @@ Esc::ExitApp ;**Press Escape to end the script at anytime**
 	Loop{
 		QuestDetect() ;Determine what quest is active and pick up a new quest if needed
 		
-		Click,%XQuestZone%,%YQuestZone% ;Go to quest's adventure zone
+		Adventure()
+		Sleep, 100
+		Click,right,%XPositionPreviousZone%, %YPositionPreviousZone% ;Safe Zone
+		Sleep, 100
+		Loop, %CurrentQuestAdvZones% { ;Go to quest's adventure zone
+				Send,{Right}
+				Sleep,100
+		}
 		
 		Loop{
 			Inventory()
